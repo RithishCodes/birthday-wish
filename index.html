@@ -1,29 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Happy Birthday</title>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎂</title>
+
 <style>
 body {
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  font-family: Arial;
+  font-family: 'Segoe UI', sans-serif;
   color: white;
-  text-align: center;
+  overflow: hidden;
 }
-.box {
-  background: rgba(255,255,255,0.1);
-  padding: 30px;
-  border-radius: 15px;
+
+.card {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff758c;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4e6a;
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* floating hearts */
+.heart {
+  position: absolute;
+  color: #ff4e6a;
+  animation: float 6s infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
 }
 </style>
 </head>
+
 <body>
-<div class="box">
-<h1>🎂 Happy Birthday!</h1>
-<p>Wishing you happiness, success, and a beautiful life ahead ✨</p>
+
+<div class="card">
+  <h1>🎂 Happy Birthday</h1>
+  <p>Click below… I wanted to tell you something</p>
+
+  <button onclick="showMessage()">Open Message 💌</button>
+
+  <p id="msg" class="hidden">
+    I know things have changed… but I still wish you the purest happiness in life. 💫  
+    <br><br>
+    I miss you sometimes, not in a complicated way… just the good moments we shared.  
+    <br><br>
+    I truly hope you’re smiling, growing, and living beautifully.  
+    <br><br>
+    And honestly… I’d really like it if our friendship continues till the end. 🤍  
+    <br><br>
+    Stay happy always… you deserve it. ✨
+    <br><br>
+    Take Care😊
+  </p>
 </div>
+
+<script>
+function showMessage() {
+  document.getElementById("msg").style.display = "block";
+}
+
+// floating hearts
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.innerHTML = "❤";
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 500);
+</script>
+
 </body>
 </html>
